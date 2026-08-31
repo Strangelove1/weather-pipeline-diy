@@ -38,17 +38,23 @@ def load_weather_data(json_file="raw_weather_data.json"):
         daily["temperature_2m_min"],
         daily["precipitation_sum"],
     )
+    #Zip takes several variables and pairs up their elements by position
 
     for obs_date, max_temp, min_temp, precipitation_sum in records:
         cursor.execute("""
         INSERT INTO raw_weather_data(obs_date, max_temp, min_temp, precipitation_sum)
         VALUES (%s, %s, %s, %s)
-        ON CONFLICT (obs_date) DO UPDATE SET
+        ON CONFLICT (obs_date) DO UPDATE SET  
             max_temp = EXCLUDED.max_temp,
             min_temp = EXCLUDED.min_temp,
             precipitation_sum = EXCLUDED.precipitation_sum,
             loaded_at = NOW()
         """, (obs_date, max_temp, min_temp, precipitation_sum))
+
+        #ON CONFLICT (obs_date) DO UPDATE SET makes it so that the unique row is updated instead of throwing an error
+        #EXCLUDED is a special Postgres pseudo-table holding the row that failed to insert
+        #loaded_at = NOW() stamps with current time
+
 
     conn.commit()
     cursor.close()
