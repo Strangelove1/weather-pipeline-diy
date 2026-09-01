@@ -5,16 +5,16 @@ import json
 dotenv.load_dotenv()
 
 DB_CONFIG = {
-    "host": os.getenv("DB_HOST"),
-    "port": os.getenv("DB_PORT"),
-    "dbname": os.getenv("DB_NAME"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
+    "host": os.getenv("WAREHOUSE_HOST"),
+    "port": os.getenv("WAREHOUSE_PORT"),
+    "dbname": os.getenv("WAREHOUSE_DB"),
+    "user": os.getenv("WAREHOUSE_USER"),
+    "password": os.getenv("WAREHOUSE_PASSWORD"),
 }
 
-def load_weather_data(json_file="raw_weather_data.json"):
+def load_weather_data(run_date):
 
-    with open(json_file, "r", encoding='UTF-8') as f:
+    with open(os.path.join("data/raw", f"raw_weather_data_for_{run_date}.json"), "r", encoding='UTF-8') as f:
         data = json.load(f)
 
     conn = psycopg2.connect(**DB_CONFIG)
@@ -61,4 +61,4 @@ def load_weather_data(json_file="raw_weather_data.json"):
     conn.close()
 
 if __name__ == "__main__":
-    load_weather_data("data/raw/raw_weather_data_for_2026-08-26.json")
+    load_weather_data("2026-08-26")

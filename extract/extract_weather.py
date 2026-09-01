@@ -18,15 +18,18 @@ def get_weather_data(latitude, longitude, daily=("temperature_2m_max,temperature
         print(f"Error: {response.status_code}")
         return None
         
-if __name__=="__main__":
+def run_weather_report(report_date):
 
  weather_data = get_weather_data(52.23009, 21.017075)
 
  os.makedirs("data/raw", exist_ok=True)
- target = os.path.join("data/raw", f"raw_weather_data_for_{weather_data['daily']['time'][1]}.json") 
+ target = os.path.join("data/raw", f"raw_weather_data_for_{report_date}.json") 
 
  with open(target, "w", encoding="utf-8") as f:
 
     json.dump(weather_data, f, ensure_ascii=False, indent=2)
 
  print(f"Downloaded  {len(weather_data)} records from weather API")
+
+if __name__ == "__main__":
+    run_weather_report("2026-08-26")
