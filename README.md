@@ -4,6 +4,8 @@ This project is my follow-up to [nbp-eur-exchange-pipeline](https://github.com/S
 
 This one can pull daily weather data for Warsaw, Poland from the free [Open-Meteo](https://open-meteo.com/) API, loads it into Postgres, and transforms it with dbt — including a window function that tracks day-over-day temperature change, the same kind of logic like the one used for the "biggest single-day rate change" query in the NBP project.
 
+UPDATE: I added a data visualisation in PowerBI to the repo. It is rather simple as of now because of the low index count, however I wanted to showcase where I can transfer the data for taking key insights from it. 
+
 ## Pipeline Overview
 
 One Airflow DAG (`weather_pipeline`), scheduled daily, with four tasks:
