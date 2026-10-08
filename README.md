@@ -87,4 +87,4 @@ Requires [Docker Desktop](https://www.docker.com/products/docker-desktop/) insta
 
 ## Shoutout to Claude Code. I've begun my adventure with data engineering not very long ago and Claude has been an incredibly helpful tool which I've been using to learn and understand the fundamentals and mechanics of data engineering. Without it I surely would've been learning at a much slower rate. It's capabilities for explaining, generating examples and documentation, bug-fixing and connecting the dots are outstanding. I'm definitely looking forward into growing in a data specialist role with Claude as a mentor.
 
-...Honestly it's incredible how redundant youtube guides and private tutors can become when compared to a desktop AI app. I can take all the time I need figuring out the basics and there's always the possibility to ask any questions I want, and I will always have them explained the way I want. Cool af.
+..Honestly it's crazy how a desktop AI app can fulfill the role of a teacher. I can take all the time I need figuring out the basics and there's always the possibility to ask any questions I want, and I will always have them explained the way I want. Cool af.
